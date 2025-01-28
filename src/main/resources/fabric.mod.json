@@ -1,0 +1,48 @@
+{
+	"schemaVersion": 1,
+	"id": "immersive-postal-service",
+	"version": "${version}",
+	"name": "Immersive Postal Service",
+	"description": "An immersive postal service, featuring real (virtual) postal workers!",
+	"authors": [
+		"heatblayze"
+	],
+	"contact": {
+		"homepage": "https://github.com/heatblayze/immersive-postal-service",
+		"sources": "https://github.com/heatblayze/immersive-postal-service"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/immersive-postal-service/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "com.heatblayze.immsersivepost.ImmersivePostalService",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "com.heatblayze.immsersivepost.ImmersivePostalServiceClient",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"immersive-postal-service.mixins.json",
+		{
+			"config": "immersive-postal-service.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
