@@ -1,4 +1,4 @@
-package com.heatblayze.immsersivepost
+package com.heatblayze.immersivepost
 
 import net.fabricmc.api.ClientModInitializer
 

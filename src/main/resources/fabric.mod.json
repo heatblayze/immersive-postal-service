@@ -17,15 +17,18 @@
 	"entrypoints": {
 		"main": [
 			{
-				"value": "com.heatblayze.immsersivepost.ImmersivePostalService",
+				"value": "com.heatblayze.immersivepost.ImmersivePostalService",
 				"adapter": "kotlin"
 			}
 		],
 		"client": [
 			{
-				"value": "com.heatblayze.immsersivepost.ImmersivePostalServiceClient",
+				"value": "com.heatblayze.immersivepost.ImmersivePostalServiceClient",
 				"adapter": "kotlin"
 			}
+		],
+		"fabric-datagen": [
+			"com.heatblayze.immersivepost.ImmersivePostalServiceDataGenerator"
 		]
 	},
 	"mixins": [

@@ -1,10 +1,11 @@
-package com.heatblayze.immsersivepost
+package com.heatblayze.immersivepost
 
 import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
 object ImmersivePostalService : ModInitializer {
-    private val logger = LoggerFactory.getLogger("immersive-postal-service")
+	val modId: String = "immersive-postal-service"
+	val logger = LoggerFactory.getLogger(modId)
 
 	override fun onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
