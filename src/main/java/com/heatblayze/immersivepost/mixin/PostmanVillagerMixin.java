@@ -2,6 +2,7 @@ package com.heatblayze.immersivepost.mixin;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.heatblayze.immersivepost.PostmanTask;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.entity.ai.brain.Activity;
 import net.minecraft.entity.ai.brain.Brain;
@@ -22,6 +23,7 @@ public class PostmanVillagerMixin {
 		if (!thisObject.getVillagerData().getProfession().id().equals("postman")) {
 			return;
 		}
+
 		var profession = thisObject.getVillagerData().getProfession();
 		brain.setTaskList(Activity.CORE, ImmutableList.of(
 				Pair.of(0, new StayAboveWaterTask<>(0.8F)),
@@ -37,15 +39,14 @@ public class PostmanVillagerMixin {
 				Pair.of(10, LoseJobOnSiteLossTask.create())
 		));
 
-		brain.setTaskList(Activity.REST, VillagerTaskListProvider.createRestTasks(profession, 0.5F));
-		brain.setTaskList(Activity.IDLE, VillagerTaskListProvider.createIdleTasks(profession, 0.5F));
+		brain.setTaskList(Activity.IDLE, ImmutableList.of(Pair.of(1, new PostmanTask())));
 		brain.setTaskList(Activity.PANIC, VillagerTaskListProvider.createPanicTasks(profession, 0.5F));
-		brain.setTaskList(Activity.HIDE, VillagerTaskListProvider.createHideTasks(profession, 0.5F));
 
 		brain.setCoreActivities(ImmutableSet.of(Activity.CORE));
 		brain.setDefaultActivity(Activity.CORE);
 		brain.doExclusively(Activity.CORE);
 		brain.refreshActivities(thisObject.getWorld().getTimeOfDay(), thisObject.getWorld().getTime());
+
 		ci.cancel();
 	}
 }
